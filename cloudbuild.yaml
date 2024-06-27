@@ -1,11 +1,8 @@
-# This YAML file defines a basic Cloud Build configuration
+# Basic Cloud Build configuration for Node.js application
 
 steps:
-- name: 'gcr.io/cloud-builders/docker'  # Use the official Docker builder image
-  args: ['build', '-t', 'gcr.io/sourabh-ambhore/my-image:latest', '.']  # Build the image
+- name: 'node:16'  # Use a specific Node.js version image
+  args: ['npm', 'install']  # Install dependencies
+- name: 'node:16'
+  args: ['npm', 'run', 'test']  # Run tests (assuming a test script in package.json)
 
-# Push the image to Google Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/sourabh-ambhore/my-image:latest']
-
-# Replace $PROJECT_ID with your actual GCP project ID
