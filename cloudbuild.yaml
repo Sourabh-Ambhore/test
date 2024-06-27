@@ -1,0 +1,11 @@
+# This YAML file defines a basic Cloud Build configuration
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'  # Use the official Docker builder image
+  args: ['build', '-t', 'gcr.io/sourabh-ambhore/my-image:latest', '.']  # Build the image
+
+# Push the image to Google Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/sourabh-ambhore/my-image:latest']
+
+# Replace $PROJECT_ID with your actual GCP project ID
